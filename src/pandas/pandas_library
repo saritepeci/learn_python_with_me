@@ -1,0 +1,106 @@
+import os
+import pandas as pd # Pandas is imported as pd for brevity in code
+from pathlib import Path
+
+# Create a Series from a list
+data = [10, 20, 30, 40, 50]
+s = pd.Series(data)
+print(s)
+
+
+file1_csv = open('C:/development/learn_python/src/pandas/file1.csv', 'a')
+
+file1_excel = open('C:/development/learn_python/src/pandas/file1.xlsx', 'a')
+
+
+#With pathlib,
+csv_path = Path('C:/development/learn_python/src/pandas/file1.csv')
+#csv_path = Path(file1_csv.path)
+
+# Read the CSV file into a DataFrame
+df = pd.read_csv(csv_path)
+
+csv_path = 'C:\\development\\learn_python\\src\\pandas\\file1.csv'
+
+dataframe = pd.read_csv(csv_path)
+dataframe.head()
+
+xlsx_path = Path('C:/development/learn_python/src/pandas/file1.xlsx')
+dataframe = pd.read_excel(xlsx_path)
+
+df_new = dataframe
+df_new.index =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+df_new.loc['a', 'Name'] = 'John Doe'
+
+# Create a Series from a list
+data = [10, 20, 30, 40, 50]
+s = pd.Series(data)
+print(s)
+
+
+"""
+Series Attributes and Methods
+Pandas Series come with various attributes and methods to help you manipulate and analyze data effectively. Here are a few essential ones:
+
+values: Returns the Series data as a NumPy array.
+
+index: Returns the index (labels) of the Series.
+
+shape: Returns a tuple representing the dimensions of the Series.
+
+size: Returns the number of elements in the Series.
+
+mean(), sum(), min(), max(): Calculate summary statistics of the data.
+
+unique(), nunique(): Get unique values or the number of unique values.
+
+sort_values(), sort_index(): Sort the Series by values or index labels.
+
+isnull(), notnull(): Check for missing (NaN) or non-missing values.
+
+apply(): Apply a custom function to each element of the Series.
+
+"""
+
+
+
+'''
+DataFrame Attributes and Methods
+DataFrames provide numerous attributes and methods for data manipulation and analysis, including:
+
+shape: Returns the dimensions (number of rows and columns) of the DataFrame.
+
+info(): Provides a summary of the DataFrame, including data types and non-null counts.
+
+describe(): Generates summary statistics for numerical columns.
+
+head(), tail(): Displays the first or last n rows of the DataFrame.
+
+mean(), sum(), min(), max(): Calculate summary statistics for columns.
+
+sort_values(): Sort the DataFrame by one or more columns.
+
+groupby(): Group data based on specific columns for aggregation.
+
+fillna(), drop(), rename(): Handle missing values, drop columns, or rename columns.
+
+apply(): Apply a function to each element, row, or column of the DataFrame.
+
+'''
+
+
+
+'''
+Exercise 2: loc() and iloc() functions¶
+loc() is a label-based data selecting method which means that we have to pass the name of the row or column that we want to select. This method includes the last element of the range passed in it.
+
+Simple syntax for your understanding:
+
+loc[row_label, column_label]
+iloc() is an indexed-based selecting method which means that we have to pass an integer index in the method to select a specific row/column. This method does not include the last element of the range passed in it.
+
+Simple syntax for your understanding:
+
+iloc[row_index, column_index]
+'''

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.12.10 on win32)" generated="2026-05-11T16:10:22.912717" rpa="false" schemaversion="5">
+<suite id="s1" name="Guide" source="C:\development\learn_python\tests\robot\guide.robot">
+<test id="s1-t1" name="Deposit Increases Account Balance" line="11">
+<kw name="Create Bank Account" owner="Guide">
+<msg time="2026-05-11T16:10:22.999285" level="INFO">${account} = Alice's account: $100.00</msg>
+<var>${account}</var>
+<arg>Alice</arg>
+<arg>100.0</arg>
+<status status="PASS" start="2026-05-11T16:10:22.999285" elapsed="0.000000"/>
+</kw>
+<kw name="Deposit To Account" owner="Guide">
+<msg time="2026-05-11T16:10:22.999285" level="INFO">${balance} = 150.0</msg>
+<var>${balance}</var>
+<arg>${account}</arg>
+<arg>50.0</arg>
+<status status="PASS" start="2026-05-11T16:10:22.999285" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-05-11T16:10:23.000286" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${balance}</arg>
+<arg>150.0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-05-11T16:10:22.999285" elapsed="0.001001"/>
+</kw>
+<doc>Basic deposit flow — the most fundamental bank operation.</doc>
+<status status="PASS" start="2026-05-11T16:10:22.998286" elapsed="0.002000"/>
+</test>
+<test id="s1-t2" name="Withdrawal Decreases Account Balance" line="17">
+<kw name="Create Bank Account" owner="Guide">
+<msg time="2026-05-11T16:10:23.000286" level="INFO">${account} = Bob's account: $200.00</msg>
+<var>${account}</var>
+<arg>Bob</arg>
+<arg>200.0</arg>
+<status status="PASS" start="2026-05-11T16:10:23.000286" elapsed="0.000000"/>
+</kw>
+<kw name="Withdraw From Account" owner="Guide">
+<msg time="2026-05-11T16:10:23.000286" level="INFO">${balance} = 125.0</msg>
+<var>${balance}</var>
+<arg>${account}</arg>
+<arg>75.0</arg>
+<status status="PASS" start="2026-05-11T16:10:23.000286" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-05-11T16:10:23.000286" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${balance}</arg>
+<arg>125.0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-05-11T16:10:23.000286" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-05-11T16:10:23.000286" elapsed="0.000998"/>
+</test>
+<test id="s1-t3" name="Overdraft Raises An Error" line="22">
+<kw name="Create Bank Account" owner="Guide">
+<msg time="2026-05-11T16:10:23.001284" level="INFO">${account} = Carol's account: $50.00</msg>
+<var>${account}</var>
+<arg>Carol</arg>
+<arg>50.0</arg>
+<status status="PASS" start="2026-05-11T16:10:23.001284" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Expect Error" owner="BuiltIn">
+<kw name="Withdraw From Account" owner="Guide">
+<msg time="2026-05-11T16:10:23.002286" level="FAIL">ValueError: Insufficient funds: balance=50.00, requested=999.00</msg>
+<arg>${account}</arg>
+<arg>999.0</arg>
+<status status="FAIL" start="2026-05-11T16:10:23.001284" elapsed="0.001002">ValueError: Insufficient funds: balance=50.00, requested=999.00</status>
+</kw>
+<arg>*Insufficient funds*</arg>
+<arg>Guide.Withdraw From Account</arg>
+<arg>${account}</arg>
+<arg>999.0</arg>
+<doc>Runs the keyword and checks that the expected error occurred.</doc>
+<status status="PASS" start="2026-05-11T16:10:23.001284" elapsed="0.001002"/>
+</kw>
+<doc>Withdrawing more than the balance should raise ValueError.</doc>
+<status status="PASS" start="2026-05-11T16:10:23.001284" elapsed="0.002002"/>
+</test>
+<test id="s1-t4" name="Sequential Deposits Accumulate Correctly" line="28">
+<kw name="Create Bank Account" owner="Guide">
+<msg time="2026-05-11T16:10:23.003721" level="INFO">${account} = Dave's account: $0.00</msg>
+<var>${account}</var>
+<arg>Dave</arg>
+<arg>0.0</arg>
+<status status="PASS" start="2026-05-11T16:10:23.003286" elapsed="0.000435"/>
+</kw>
+<kw name="Deposit To Account" owner="Guide">
+<arg>${account}</arg>
+<arg>100.0</arg>
+<status status="PASS" start="2026-05-11T16:10:23.003721" elapsed="0.000000"/>
+</kw>
+<kw name="Deposit To Account" owner="Guide">
+<arg>${account}</arg>
+<arg>200.0</arg>
+<status status="PASS" start="2026-05-11T16:10:23.003721" elapsed="0.000000"/>
+</kw>
+<kw name="Get Balance" owner="Guide">
+<msg time="2026-05-11T16:10:23.003721" level="INFO">${balance} = 300.0</msg>
+<var>${balance}</var>
+<arg>${account}</arg>
+<status status="PASS" start="2026-05-11T16:10:23.003721" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-05-11T16:10:23.003721" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${balance}</arg>
+<arg>300.0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-05-11T16:10:23.003721" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-05-11T16:10:23.003286" elapsed="0.000435"/>
+</test>
+<test id="s1-t5" name="Circle Area Is Mathematically Correct" line="35">
+<kw name="Circle Area" owner="Guide">
+<msg time="2026-05-11T16:10:23.004723" level="INFO">${area} = 78.53981633974483</msg>
+<var>${area}</var>
+<arg>5.0</arg>
+<status status="PASS" start="2026-05-11T16:10:23.004723" elapsed="0.000000"/>
+</kw>
+<kw name="Values Are Close" owner="Guide">
+<msg time="2026-05-11T16:10:23.004723" level="INFO">${close} = True</msg>
+<var>${close}</var>
+<arg>${area}</arg>
+<arg>78.5398</arg>
+<arg>0.001</arg>
+<status status="PASS" start="2026-05-11T16:10:23.004723" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${close}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-05-11T16:10:23.004723" elapsed="0.000374"/>
+</kw>
+<doc>pi * r^2 for r=5 should be approximately 78.54.</doc>
+<status status="PASS" start="2026-05-11T16:10:23.003721" elapsed="0.001376"/>
+</test>
+<test id="s1-t6" name="Rectangle Area Is Width Times Height" line="41">
+<kw name="Rectangle Area" owner="Guide">
+<msg time="2026-05-11T16:10:23.005507" level="INFO">${area} = 24.0</msg>
+<var>${area}</var>
+<arg>4.0</arg>
+<arg>6.0</arg>
+<status status="PASS" start="2026-05-11T16:10:23.005097" elapsed="0.000410"/>
+</kw>
+<kw name="Should Be Equal As Numbers" owner="BuiltIn">
+<msg time="2026-05-11T16:10:23.005507" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${area}</arg>
+<arg>24.0</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<status status="PASS" start="2026-05-11T16:10:23.005507" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2026-05-11T16:10:23.005097" elapsed="0.000410"/>
+</test>
+<doc>Acceptance tests for the Python learning guide.
+Run from the project root:
+    python -m robot tests/robot/guide.robot</doc>
+<status status="PASS" start="2026-05-11T16:10:22.913965" elapsed="0.091542"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Guide" id="s1" pass="6" fail="0" skip="0">Guide</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
