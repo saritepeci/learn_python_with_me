@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <book id="bk101">
+        <author>Gambardella, Matthew</author>
+        <title>XML Developer's Guide</title>
+        <genre>Computer</genre>
+        <price>44.95</price>
+        <publish_date>2000-10-01</publish_date>
+    </book>
+        <book id="bk201">
+        <author>eden, Martin</author>
+        <title>XML Developer's Guide</title>
+        <genre>Computerss</genre>
+        <price>442.95</price>
+        <publish_date>1800-10-01</publish_date>
+    </book>
+</catalog>
