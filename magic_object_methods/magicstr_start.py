@@ -13,9 +13,16 @@ class Book:
     def __repr__(self):
         return f"Book(title='{self.title}', author='{self.author}', price={self.price})"
 
+    def price_dumping(self):
+        if self.price % 1 == 0:
+            self.price -= 0.01
+        return self.price
+
 b1 = Book("The snow", "Orhan Pamuk", 20)
 b2 = Book("Martin Eden", "Jack London", 15)
 
+b1.price_dumping()
+b2.price_dumping()
 print(b1)   
 print(b2)
 
