@@ -1,0 +1,59 @@
+
+# my_list = ["Anne", "Nyaga","Papatya"]
+
+# print("List item: ", my_list[1])
+
+# my_list.append("New name")
+# print(my_list)
+
+#####################
+
+# numbers=[]
+
+# while True:
+#     num = int(input("Give a number, without 67: "))
+#     if num == 67:
+#         break
+#     numbers.append(num)
+
+# print(numbers)
+
+#####################
+results =[1,2,3,5,4,3,7,8,9,0,22]
+
+results.append(5)
+print(results)
+
+results.insert(0, 99)
+print(results)
+
+results.pop(0) # if you not write 0, remove last item 
+print(results) 
+
+results.remove(22) # which number want to remove 
+print(results) 
+
+results.append(-8)
+results.append(14)
+
+print(results) 
+
+#results.sort()
+#print(results) 
+# Or this way
+# results = results.sort()
+# print("after sort", results) 
+
+######################
+print("after for ")
+for num in results:
+    if num < 0:
+        break
+    print (num)
+
+########################
+
+name = "All way not same, but keep it simple."
+print(name)
+name = name[::-1]
+print("after reverse name ", name) 
