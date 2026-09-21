@@ -76,4 +76,30 @@ def increase_first(m_list:list):
 l=[10,21,32,43]
 increase_first(l)
 print(l)
+############ This example problamatic better way above:
+def second_smallest_item_bad(l:list):
+    l.sort()
+    return l[1]
+
+def second_smallest_item_better_way(l:list):
+    l2 = sorted(l)
+    return l2[1]
+
+
+numbers_1= [2,4,5,8,1,9,5,6,7]
+print(second_smallest_item_better_way(numbers_1))
+print(numbers_1)
+############ [:]
+a = [1,2,3]
+b = a
+a[0] = 10
+print(b) # [10, 2, 3]
+
+c = [1,2,3]
+d = c[:]
+c[0] = 10
+print(c) # [10, 2, 3]
+print(d) # [1, 2, 3] if a changed d does not change 
+
+############ 
 
