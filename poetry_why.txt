@@ -1,0 +1,55 @@
+Why Poetry :
+
+Updated to-do list
+
+First, I’ll look at the `pyproject.toml` settings and repo notes for this project; then, I’ll explain the general concepts of Poetry and provide command examples tailored to your project’s specific situation.
+
+Read
+
+Read memory
+
+Yes, you don’t need to run `poetry lock` separately in Poetry after executing `git reset --hard HEAD`. That command reverts tracked files to their state in the last commit but leaves the local virtual environment unchanged. If you want to set up or synchronize the environment based on the repo definition, `poetry install` is sufficient.
+
+What does Poetry do?
+
+It addresses two common issues in Python projects:
+
+- Manages dependencies: It installs the packages the project needs and selects versions that are compatible with one another.
+- Isolates the project environment: It assigns a dedicated virtual environment to each project. This ensures that a package version in one project doesn't break another project.
+
+The `pyproject.toml` file in this project specifies Python 3.12 (or higher) and the `sqlalchemy` and `pyodbc` packages.
+
+The difference between the two files
+
+- `pyproject.toml`: The project definition and its direct requirements. Rules such as "use SQLAlchemy 2.x" are defined here.
+- `poetry.lock`: The specific package versions selected based on those rules. It ensures the project can be set up with the exact same packages on other computers.
+
+Generally, instead of manually adding packages to `pyproject.toml`, you use a Poetry command. For example:
+
+poetry add requests
+
+
+This adds the package to the project, updates the necessary project and lock files, and installs it in the environment. For development tools like testing frameworks:
+
+poetry add --group dev pytest
+
+
+When downloading a repository for the first time or after pulling dependency changes in the project:
+
+poetry install
+
+
+To run the project:
+
+poetry run python main.py
+
+
+When should I use `poetry lock`?
+
+`poetry lock` resolves dependencies again and updates the lock file. It is not run every time you start working on the project; it is used when you want to refresh package versions or regenerate the lock file after modifying dependency definitions. Use `poetry update` to intentionally update packages.
+
+Is Poetry the best option?
+
+There is no single "best" option for everyone. Poetry is convenient because it manages dependencies and virtual environments in a unified workflow. `uv` is a modern, fast alternative, while `venv` and `pip` represent a more basic approach. Since this project is already set up for Poetry, sticking with Poetry for now is the simplest path.
+
+In short: use `poetry add` to add a package, `poetry install` to install existing dependencies, and `poetry run` to execute the project. `poetry lock` and `poetry update` are not routine startup commands.
